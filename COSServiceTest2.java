@@ -1,7 +1,3 @@
-import com.tencent.cloud.cos.util.MD5;
-
-import java.util.Date;
-
 public class COSServiceTest2 {
 public static void main(String[] args) {
 /*
@@ -22,26 +18,8 @@ http://cloud.tencent.com/test.jpg?sign=1582791032-im1acp76sx9sdqe601v-0-dd63f95e
 String cdnKey = "xxxxxxxxxxxxxxx";
 String objectName = "xxxxxxxxxx";
 
-Date now = DateUtils.getMiPaasNowChinaTime();
-Date expiration = DateUtils.dateAddYear(now, 80);
 
-StringBuilder signContentOrigin = new StringBuilder()
-.append(expiration.getTime() / 1000).append("-")
-.append(UUIDUtil.gen32RandomString()).append("-")
-.append(0).append("-");
 
-String signMd5Origin = new StringBuilder().append("/").append(objectName).append("-")
-.append(signContentOrigin)
-.append(cdnKey).toString();
-
-String signMd5 = MD5.stringToMD5(signMd5Origin);
-
-StringBuilder stringBuilder = new StringBuilder();
-String uri = "https://xxxxxx.com.cn/" + objectName;
-String url = stringBuilder.append(uri).append("?sign=")
-.append(signContentOrigin).append(signMd5)
-.toString();
-
-System.out.println(url);
+System.out.println(cdnKey + objectName);
 }
 }
